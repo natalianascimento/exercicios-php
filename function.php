@@ -15,14 +15,14 @@ function exemplo ($num_2){
 }
 echo exemplo (5); */
 
-//EXEMPLO DE ERRO - VARIÁVEL DECLARADA DENTRO DO ESCOPO DA FUNÇÃO NUMA OPERAÇÃO EXTERNA A FUNÇÃO
+//EXEMPLO DE ERRO - VARIï¿½VEL DECLARADA DENTRO DO ESCOPO DA FUNï¿½ï¿½O NUMA OPERAï¿½ï¿½O EXTERNA A FUNï¿½ï¿½O
 /* function exemplo($num_1, $num_2) {
     $operacao = $num_1 + $num_2;
     return $operacao;
 }
 exemplo (4,6);
 $num_3 = 10;
-$operacao_2 = $num_1 + $num_3; //Se aqui retirarmos a variável $num_1 o código roda. O PHP não irá reconhecer como a variável $num_1 como declarada, já que ela é um parâmetro da função.
+$operacao_2 = $num_1 + $num_3; //Se aqui retirarmos a variï¿½vel $num_1 o cï¿½digo roda. O PHP nï¿½o irï¿½ reconhecer como a variï¿½vel $num_1 como declarada, jï¿½ que ela ï¿½ um parï¿½metro da funï¿½ï¿½o.
 echo $operacao_2; */
 
 
@@ -30,13 +30,13 @@ echo $operacao_2; */
     echo "Bem-vindo ao meu site!";
 }
 
-mensagem(); //invoca a função */
+mensagem(); //invoca a funï¿½ï¿½o */
 
 /* function cubo($n){
     echo "Calculo do cubo de um numero <br>";
     echo "O cubo de ".$n." e ".$n*$n*$n;
 }
-//invocando a função:
+//invocando a funï¿½ï¿½o:
 $num=5;
 cubo($num); */
 
@@ -68,7 +68,7 @@ function dividirB ($num_1, $num_2){
     $operacao = $num_1 / $num_2;
     return $operacao."<br>";}
     dividirB (30,2);} */
- //neste caso nada é impresso
+ //neste caso nada ï¿½ impresso
  
 
 
@@ -83,7 +83,7 @@ echo $numero; */
 
 /* echo 1 + "10" * 2; //RESULTADO IGUAL A 21 */
 
-//EXERCÍCIO
+//EXERCï¿½CIO
 /* $entrada = 14.99;
 $meia = $entrada/2;
 $valor = 0;
@@ -94,7 +94,7 @@ if ($meia){
 echo $valor; */
 
 
-//EXERCÍCIO
+//EXERCï¿½CIO
 /* $x = 20;
 $y = 5;
 
@@ -111,10 +111,78 @@ echo "O nome do autor e ";
 echo $autor; */
 
 
-//EXERCÍCIO VARIÁVEIS DINÂMICAS
+//EXERCï¿½CIO VARIï¿½VEIS DINï¿½MICAS
 /* $variavel = "carro";
 $$variavel = "Gol";
 echo $carro; */
+
+//EXERCICIO CPF
+/* function cpf_errado($cpf){
+    $erro =  false;
+    $aux_cpf = "";
+    for ($j=0;$j<strlen($cpf);$j++)
+        if(substr($cpf,$j,1)>="0" AND substr($cpf,$j,1)<="9")
+            $aux_cpf.=substr($cpf,$j,1);
+        if(strlen($aux_cpf)!=11)
+            $erro=true;
+            else{
+                $cpf1 = $aux_cpf;
+                $cpf2 = substr($cpf,-2);
+                $controle = "";
+                $start = 2;
+                $end = 10;
+                for ($i=1;$i<=2;$i++){
+                    $soma = 0;
+                    for($j=$start;$j<=$end;$j++)
+                        $soma += substr($cpf1,($j-$i-1),1)*($end+1+$i-$j);
+                    if($i==2)
+                        $soma += $digito*2;
+                    $digito = ($soma*10)%11;
+                    if($digito==10)
+                        $digito =0;
+                    $controle.=$digito;
+                    $start=3;
+                    $end=11;
+                }
+                if($controle!=$cpf2)
+                    $erro=true;
+            }
+            return $erro;
+} */
+                
+                
+//EXERCICIO
+/* function dobro ($valor){
+    $valor = 2*$valor;
+}
+function duplica(&$valor){
+    $valor = 2*$valor;
+}
+$valor=5;
+dobro($valor);
+echo $valor."<br>";
+duplica($valor);
+echo $valor; */
+
+//EXERCICIO FUNÃ‡Ã•ES RECURSIVAS
+/* function teste($valor){
+    if ($valor!=0){
+        echo "Foi chamada a funï¿½ï¿½o teste passando o valor $valor <br>";
+        teste($valor-1);
+    }
+}
+teste(7); */
+
+
+//EXERCICIO FUNÃ‡Ã•ES RECURSIVAS - FATORIAL
+function fatorial ($numero){
+    if($numero<0) {return -1;}
+    if($numero<=1){return 1;}
+    return $numero*fatorial($numero-1);
+}
+echo "O fatorial de 3 Ã© ".fatorial(3);
+echo "<br> O fatorial de 4 Ã© ".fatorial(4);
+echo "<br>O fatorial de 5 Ã© ".fatorial(5);
 
 
 
